@@ -223,3 +223,33 @@ export const experiences: Experience[] = [
     color: '#7B61FF',
   },
 ];
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  title: string;
+  company: string;
+  avatar: string;
+  review: string;
+}
+
+export const testimonials: Testimonial[] = [
+  {
+    id: 'dalit',
+    name: 'Dalit Kaplan',
+    title: 'Director',
+    company: 'Just World Group · Storywell',
+    avatar: 'DK',
+    review:
+      "Kam created two websites for me — my business website and my personal website. The websites look great and are highly visible. His response time and turnaround time was incredibly quick. He is always available to help out with technical queries and he empowers me to work on my own website as well. And he's such a nice guy! Highly recommended!",
+  },
+  {
+    id: 'rodney',
+    name: 'Rodney Janover',
+    title: 'Founder',
+    company: 'Hellomello™',
+    avatar: 'RJ',
+    review:
+      'Kamruzzaman was an excellent help for two of my websites. He showed great knowledge of any issues that we faced and was able to handle any questions I had. His work ethic is also excellent and gets work done very quickly when needed. I enjoyed working with Kam and I plan on continuing our work relationship into the future.',
+  },
+];
