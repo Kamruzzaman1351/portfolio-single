@@ -168,8 +168,8 @@ export default function Projects() {
           ))}
         </motion.div>
 
-        {/* View all link */}
-        <motion.div
+        {/* View all link — commented out until a GitHub profile / projects page is ready */}
+        {/* <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
@@ -189,7 +189,7 @@ export default function Projects() {
               aria-hidden="true"
             />
           </a>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

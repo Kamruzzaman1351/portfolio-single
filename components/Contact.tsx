@@ -69,6 +69,12 @@ export default function Contact() {
     message: '',
   });
   const [status, setStatus] = useState<Status>('idle');
+  const [errorMessage, setErrorMessage] = useState<string>('');
+
+  // Honeypot field — bots fill it, humans never see it
+  const [honeypot, setHoneypot] = useState('');
+  // Track when the form mounted for timing gate
+  const formLoadTime = useRef<number>(Date.now());
 
   const handleChange = (id: keyof FormState, val: string) =>
     setForm((s) => ({ ...s, [id]: val }));
@@ -76,13 +82,39 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
-    // Simulate network call
-    await new Promise((r) => setTimeout(r, 1600));
-    setStatus('success');
+    setErrorMessage('');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...form,
+          website: honeypot,               // honeypot value
+          timestamp: formLoadTime.current, // timing gate
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErrorMessage(data.error ?? 'Something went wrong. Please try again.');
+        setStatus('error');
+        return;
+      }
+
+      setStatus('success');
+    } catch {
+      setErrorMessage('Network error. Please check your connection and try again.');
+      setStatus('error');
+    }
   };
 
   const handleReset = () => {
     setForm({ name: '', email: '', subject: '', message: '' });
+    setHoneypot('');
+    setErrorMessage('');
+    formLoadTime.current = Date.now();
     setStatus('idle');
   };
 
@@ -245,6 +277,23 @@ export default function Contact() {
                     noValidate
                     aria-label="Contact form"
                   >
+                    {/* Honeypot — visually hidden, aria-hidden, never filled by real users */}
+                    <div
+                      aria-hidden="true"
+                      style={{ position: 'absolute', left: '-9999px', top: '-9999px' }}
+                    >
+                      <label htmlFor="website">Leave this empty</label>
+                      <input
+                        id="website"
+                        name="website"
+                        type="text"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={honeypot}
+                        onChange={(e) => setHoneypot(e.target.value)}
+                      />
+                    </div>
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <InputField
                         id="name"
@@ -287,6 +336,19 @@ export default function Contact() {
                         aria-required="true"
                       />
                     </div>
+                    {/* Error message */}
+                    {status === 'error' && errorMessage && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex items-start gap-2.5 px-4 py-3 bg-red-500/8 border border-red-500/20 rounded-xl text-sm font-body text-red-400"
+                        role="alert"
+                      >
+                        <span className="shrink-0 mt-0.5" aria-hidden="true">⚠</span>
+                        {errorMessage}
+                      </motion.div>
+                    )}
+
                     <button
                       type="submit"
                       disabled={status === 'submitting'}
