@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Syne, DM_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { SITE_URL, profile } from '@/lib/data';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const syne = Syne({
   subsets: ['latin'],
@@ -141,7 +142,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${syne.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="min-h-screen bg-dark text-bright antialiased">{children}</body>
+      <body className="min-h-screen bg-dark text-bright antialiased">
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
