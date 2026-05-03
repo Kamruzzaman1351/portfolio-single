@@ -165,7 +165,7 @@ export default function Hero() {
             </button>
 
             <a
-              href="/cv.pdf"
+              href="/kamruzzaman_cv.pdf"
               download
               className="flex items-center gap-2 px-6 py-3 border border-white/15 text-bright
                          font-body font-semibold text-sm rounded-xl

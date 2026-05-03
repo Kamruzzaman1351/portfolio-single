@@ -1,3 +1,6 @@
+// ─── Site-wide constant — update this when you deploy to a real domain ───────
+export const SITE_URL = 'https://mdkam.dev';
+
 export interface Social {
   github: string;
   linkedin: string;
@@ -232,6 +235,56 @@ export interface Testimonial {
   avatar: string;
   review: string;
 }
+
+export interface FAQ {
+  question: string;
+  answer: string;
+}
+
+// Questions real people & AI assistants ask about a developer for hire.
+// These feed both the visible FAQ section and the FAQPage JSON-LD schema.
+export const faqs: FAQ[] = [
+  {
+    question: 'Who is Md Kamruzzaman?',
+    answer:
+      'Md Kamruzzaman is a senior full-stack software engineer with over 9 years of professional experience building production-grade web applications for enterprise clients across the USA, Canada, the EU, and globally. He is currently a Backend Laravel Developer at Coalition Technologies, a US-based digital agency, working fully remotely from Malaysia.',
+  },
+  {
+    question: 'What services does Md Kamruzzaman offer?',
+    answer:
+      'Md Kamruzzaman offers full-stack web development, Laravel and PHP backend development, React and Next.js frontend development, Shopify and BigCommerce app development, ERP/CRM integrations (NetSuite, Salesforce, Celigo), headless e-commerce architecture, SaaS platform development, REST API design, cloud infrastructure setup on AWS and DigitalOcean, and technical consulting.',
+  },
+  {
+    question: 'What technologies does Md Kamruzzaman specialise in?',
+    answer:
+      'His core stack is Laravel, PHP, React, Next.js, and TypeScript, with deep expertise in MySQL, PostgreSQL, Docker, AWS, and DigitalOcean. He also has hands-on experience with Shopify and BigCommerce APIs, GraphQL, Salesforce CRM, NetSuite ERP, Stripe payment integrations, and Vue.js.',
+  },
+  {
+    question: 'Is Md Kamruzzaman available for freelance or contract work?',
+    answer:
+      'Yes. Md Kamruzzaman is available for freelance and contract engagements, particularly with teams based in Ireland, the UK, and the United States. He works fully remote and is open to both short-term project-based contracts and longer-term engagements.',
+  },
+  {
+    question: 'Where is Md Kamruzzaman based and does he work remotely?',
+    answer:
+      'Md Kamruzzaman is currently based in Malaysia and works fully remotely. He has extensive experience collaborating with distributed teams across Europe and North America, with no timezone barriers for async-first teams.',
+  },
+  {
+    question: 'What notable clients has Md Kamruzzaman worked with?',
+    answer:
+      'He has delivered projects for well-known clients including Lamborghini, DrinkMate, Gradwear, InHaven, Mom\'s Pantry, LN Curtis, and Bisect Hosting — spanning luxury brand e-commerce, headless Shopify, BigCommerce integrations, and custom SaaS platforms.',
+  },
+  {
+    question: 'What is Md Kamruzzaman\'s experience with Shopify development?',
+    answer:
+      'Md Kamruzzaman has built 35+ custom Shopify and BigCommerce applications, including 2 published on public marketplaces. He has delivered headless Shopify architectures, custom storefront APIs, Shopify Plus integrations, and end-to-end middleware platforms connecting Shopify with Salesforce, ShipStation, and logistics providers like FedEx, UPS, and USPS.',
+  },
+  {
+    question: 'How can I contact Md Kamruzzaman to hire him?',
+    answer:
+      'You can reach Md Kamruzzaman via the contact form on this website, by emailing mdrashed1351@gmail.com, or by connecting on LinkedIn at linkedin.com/in/kamruzzaman-md. He typically responds within 24 hours.',
+  },
+];
 
 export const testimonials: Testimonial[] = [
   {

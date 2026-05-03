@@ -112,7 +112,7 @@ function buildEmailHtml(name: string, email: string, subject: string, message: s
           <!-- Footer -->
           <tr>
             <td style="padding:20px 0 0;text-align:center;">
-              <p style="margin:0;font-size:12px;color:#6B7A99;">Sent from your portfolio contact form · <a href="https://kamruzzaman.dev" style="color:#6B7A99;">kamruzzaman.dev</a></p>
+              <p style="margin:0;font-size:12px;color:#6B7A99;">Sent from your portfolio contact form · <a href="https://mdkam.dev" style="color:#6B7A99;">mdkam.dev</a></p>
             </td>
           </tr>
 
