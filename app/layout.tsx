@@ -3,6 +3,7 @@ import { Syne, DM_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { SITE_URL, profile } from '@/lib/data';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/next';
 
 const syne = Syne({
   subsets: ['latin'],
@@ -145,6 +146,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen bg-dark text-bright antialiased">
         {children}
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
