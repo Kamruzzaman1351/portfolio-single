@@ -19,7 +19,7 @@ export interface Profile {
 
 export interface Skill {
   name: string;
-  category: 'Frontend' | 'Backend' | 'DevOps & Tools' | 'Database' | 'Integrations' | 'Learning For Fun';
+  category: 'Frontend' | 'Backend' | 'DevOps & Tools' | 'Database' | 'Integrations' | 'AI & LLM Tools' | 'Learning For Fun';
   level: number;
 }
 
@@ -97,7 +97,7 @@ export const skills: Skill[] = [
   { name: 'DigitalOcean', category: 'DevOps & Tools', level: 5 },
   { name: 'Git', category: 'DevOps & Tools', level: 5 },
   { name: 'Figma', category: 'DevOps & Tools', level: 3 },
-  { name: 'Linux', category: 'DevOps & Tools', level: 4 },
+  { name: 'CI/CD', category: 'DevOps & Tools', level: 4 },
   { name: 'MySQL', category: 'Database', level: 5 },
   { name: 'PostgreSQL', category: 'Database', level: 4 },
   { name: 'Firebase', category: 'Database', level: 4 },
@@ -108,6 +108,10 @@ export const skills: Skill[] = [
   { name: 'Salesforce CRM', category: 'Integrations', level: 4 },
   { name: 'Monday / Celigo', category: 'Integrations', level: 3 },
   { name: 'Stripe / Payment APIs', category: 'Integrations', level: 5 },
+  { name: 'ChatGPT / Codex', category: 'AI & LLM Tools', level: 5 },
+  { name: 'Claude / Claude Code', category: 'AI & LLM Tools', level: 5 },
+  { name: 'Cursor / GitHub Copilot', category: 'AI & LLM Tools', level: 5 },
+  { name: 'Gemini AI', category: 'AI & LLM Tools', level: 4 },
   { name: 'Rust', category: 'Learning For Fun', level: 2 },
   { name: 'Unity', category: 'Learning For Fun', level: 2 },
   { name: 'C#', category: 'Learning For Fun', level: 3 },
@@ -178,7 +182,7 @@ export const projects: Project[] = [
     description:
       "Architected and delivered a custom middleware platform integrating Shopify, ShipStation, Salesforce, and logistics providers such as FedEx and UPS. Implemented scalable APIs and automated workflows to manage end-to-end sales, order fulfillment, and customer data synchronization. Developed a headless Shopify architecture, improving performance, flexibility, and integration capabilities across systems.",
     gradient: 'from-cyan-500/20 via-blue-500/10 to-violet-500/20',
-    initials: 'DM',
+    initials: 'MP',
     tags: ['Laravel','PHP', 'React', 'MySQL', 'Shopify Headless', 'NextJs', 'AWS', 'Tailwind CSS', 'Salesforce', 'ShipStation', 'FedEx', 'UPS', 'USPS', 'GraphQL',],
     github: '#',
     demo: 'https://momspantry.ca/',

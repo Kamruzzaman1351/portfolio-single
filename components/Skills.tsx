@@ -10,49 +10,77 @@ import {
   SiTailwindcss,
   SiGraphql,
   SiNodedotjs,
-  SiPython,
-  SiPostgresql,
-  SiMongodb,
-  SiRedis,
   SiDocker,
   SiGit,
   SiFigma,
-  SiLinux,
   SiRust,
-  SiKubernetes,
-  SiPrisma,
   SiMysql,
+  SiPostgresql,
   SiFirebase,
+  SiMongodb,
   SiShopify,
   SiSalesforce,
   SiStripe,
+  SiOpenai,
+  SiGooglegemini,
+  SiGithubcopilot,
+  // Icons added for full coverage
+  SiVuedotjs,
+  SiLaravel,
+  SiPhp,
+  SiDjango,
+  SiRubyonrails,
+  SiDigitalocean,
+  SiGithubactions,
+  SiBigcommerce,
+  SiUnity,
 } from 'react-icons/si';
 import type { IconType } from 'react-icons';
 import { skills, type Skill } from '@/lib/data';
 
 const ICON_MAP: Partial<Record<string, IconType>> = {
+  // Frontend
   React: SiReact,
   'Next.js': SiNextdotjs,
   TypeScript: SiTypescript,
+  VueJs: SiVuedotjs,
   'Tailwind CSS': SiTailwindcss,
-  GraphQL: SiGraphql,
+  // Framer Motion has no SI icon — falls back to Code2
+  // Backend
+  Laravel: SiLaravel,
+  PHP: SiPhp,
   'Node.js': SiNodedotjs,
-  Python: SiPython,
-  PostgreSQL: SiPostgresql,
-  MongoDB: SiMongodb,
-  Redis: SiRedis,
+  'Django / Python': SiDjango,
+  'Ruby on Rails': SiRubyonrails,
+  // REST API Design has no SI icon — falls back to Code2
+  GraphQL: SiGraphql,
+  // DevOps & Tools
   Docker: SiDocker,
+  // AWS: no matching SI icon in this react-icons version — falls back to Code2
+  DigitalOcean: SiDigitalocean,
   Git: SiGit,
   Figma: SiFigma,
-  Linux: SiLinux,
-  Rust: SiRust,
-  Kubernetes: SiKubernetes,
-  Prisma: SiPrisma,
+  'CI/CD': SiGithubactions,
+  // Database
   MySQL: SiMysql,
+  PostgreSQL: SiPostgresql,
   Firebase: SiFirebase,
+  MongoDB: SiMongodb,
+  // Integrations
   'Shopify API': SiShopify,
+  'BigCommerce API': SiBigcommerce,
+  // NetSuite ERP and Monday / Celigo have no SI icon — fall back to Code2
   'Salesforce CRM': SiSalesforce,
   'Stripe / Payment APIs': SiStripe,
+  // AI & LLM Tools
+  'ChatGPT / Codex': SiOpenai,
+  'Claude / Claude Code': SiOpenai,
+  'Cursor / GitHub Copilot': SiGithubcopilot,
+  'Gemini AI': SiGooglegemini,
+  // Learning For Fun
+  Rust: SiRust,
+  Unity: SiUnity,
+  // Java, C#, Mobile App Development, Game Development fall back to Code2
 };
 
 const CATEGORY_COLORS: Record<Skill['category'], string> = {
@@ -61,6 +89,7 @@ const CATEGORY_COLORS: Record<Skill['category'], string> = {
   'DevOps & Tools': 'text-emerald-400',
   Database: 'text-sky-400',
   Integrations: 'text-orange-400',
+  'AI & LLM Tools': 'text-pink-400',
   'Learning For Fun': 'text-amber-400',
 };
 
@@ -70,6 +99,7 @@ const CATEGORY_BORDER: Record<Skill['category'], string> = {
   'DevOps & Tools': 'border-emerald-400/20 hover:border-emerald-400/40',
   Database: 'border-sky-400/20 hover:border-sky-400/40',
   Integrations: 'border-orange-400/20 hover:border-orange-400/40',
+  'AI & LLM Tools': 'border-pink-400/20 hover:border-pink-400/40',
   'Learning For Fun': 'border-amber-400/20 hover:border-amber-400/40',
 };
 
@@ -79,6 +109,7 @@ const DOT_COLORS: Record<Skill['category'], string> = {
   'DevOps & Tools': 'bg-emerald-400',
   Database: 'bg-sky-400',
   Integrations: 'bg-orange-400',
+  'AI & LLM Tools': 'bg-pink-400',
   'Learning For Fun': 'bg-amber-400',
 };
 
@@ -88,6 +119,7 @@ const CATEGORIES: Skill['category'][] = [
   'Database',
   'DevOps & Tools',
   'Integrations',
+  'AI & LLM Tools',
   'Learning For Fun',
 ];
 
@@ -182,7 +214,8 @@ export default function Skills() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
           {CATEGORIES.map((category) => {
             const categorySkills = skills.filter((s) => s.category === category);
-            // Integrations has 6 items — span both columns so badges have room
+            // Only Integrations (6 items) spans full width — uses lg:grid-cols-3 for a 3×2 layout.
+            // All other categories (including AI & LLM Tools with 4 items) use the standard 2-col grid.
             const isWide = category === 'Integrations';
             return (
               <div key={category} className={isWide ? 'md:col-span-2' : ''}>
